@@ -20,5 +20,33 @@ class UserProd {
   constructor(public email: string, public name: string, private id: number) {}
 }
 
-const ofcljaved = new User("ofcljaved@.com", "ofcljaved ");
-ofcljaved.city = "L.A.";
+const ofcljaved = new User('ofcljaved@.com', 'ofcljaved ');
+ofcljaved.city = 'L.A.';
+
+//Getter and setters
+
+class UserClass {
+  protected _coursecount = 1;
+  readonly city: string | null = null;
+  constructor(public email: string, public name: string, private id: number) {}
+
+  get getEmail(): string {
+    return `${this.name}@ofcljaved.com`;
+  }
+
+  get coursecount(): number {
+    return this._coursecount;
+  }
+
+  set coursecount(coursenum: number) {
+    //typescript strictly says we shouldn't put anything in the return type here not even void type
+    this._coursecount = coursenum;
+  }
+}
+
+class SubUserClass extends UserClass {
+  isFamily: boolean = true;
+  changeCourseCount() {
+    this._coursecount = 2; //only protected property can be pass on to children through inheritence not the private ones
+  }
+}
