@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TypeScript</title>
+    <style>
+      *,
+      *::after,
+      *::before {
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        display: grid;
+        place-content: center;
+        margin: 0;
+        background-color: #454545;
+        color: #eeeeee;
+        min-block-size: 100vh;
+      }
+      input,
+      button,
+      p {
+        font-size: 2rem;
+        padding-inline: 1rem;
+        padding-block: 0.5rem;
+        margin-inline: 0.25rem;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <input type="number" id="num" />
+      <button type="reset" id="reset">Reset</button>
+      <button type="submit" id="submit">Submit</button>
+    </form>
+    <p>Input times 20: <code id="result">0</code></p>
+    <script src="./index.js"></script>
+  </body>
+</html>
