@@ -1,0 +1,134 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+  --clr-primary: hsl(208, 37%, 20%);
+  --clr-accent: hsl(254, 82%, 42%);
+  --clr-waring: hsl(348, 83%, 47%);
+  --clr-bg: hsl(0, 0%, 98%);
+  --clr-bg-secondary: hsl(222, 80%, 90%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --clr-primary: hsl(180, 7%, 97%);
+    --clr-accent: hsl(254, 48%, 35%);
+    --clr-waring: hsl(348, 65%, 55%);
+    --clr-bg: hsl(0, 0%, 13%);
+    --clr-bg-secondary: hsl(222, 0%, 24%);
+  }
+}
+
+body {
+  margin: 0;
+  min-block-size: 100dvh;
+  background-color: var(--clr-bg);
+  color: var(--clr-primary);
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.1;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+main {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: clamp(0.8rem, 3vw, 2rem);
+}
+form {
+  justify-content: center;
+  display: flex;
+  gap: clamp(0.2rem, 1vw, 0.4rem);
+  padding-inline: clamp(1rem, 2vw, 2rem);
+}
+form > button,
+form > input {
+  --_border-radius: clamp(0.3rem, 1vw, 0.5rem);
+  outline: none;
+  border: none;
+  font-size: clamp(0.8rem, 2vw, 1rem);
+  padding-inline: clamp(1rem, 2vw, 2rem);
+  padding-block: clamp(0.5rem, 1vw, 1rem);
+}
+form > button {
+  color: whitesmoke;
+  background-color: var(--clr-accent);
+  border-bottom-right-radius: var(--_border-radius);
+  border-top-right-radius: var(--_border-radius);
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+
+form > button:hover,
+form > button:focus,
+form > button:active {
+  box-shadow: 0 0 0 0.025rem currentColor,
+    inset 0 0 100vh hsla(0, 0%, 100%, 0.1);
+}
+
+form > input {
+  max-width: 30rem;
+  width: 100%;
+  box-shadow: 0.01rem 0.1rem 0.2rem hsla(0, 0%, 50%, 0.5);
+  border-top-left-radius: var(--_border-radius);
+  border-bottom-left-radius: var(--_border-radius);
+}
+
+form > input:focus {
+  box-shadow: 0 0 0rem 0.05rem var(--clr-primary);
+}
+
+#todoContainer {
+  display: grid;
+  gap: clamp(0.35rem, 1vw, 1rem);
+  margin-block: clamp(1rem, 2vw, 2rem);
+}
+
+.todo {
+  display: flex;
+  background-color: var(--clr-bg-secondary);
+  gap: clamp(0.25rem, 1vw, 1rem);
+  align-items: center;
+  padding-inline: clamp(0.4rem, 1vw, 0.8rem);
+}
+
+.todo > input[type='checkbox'] {
+  height: 1.5em;
+  aspect-ratio: 1;
+  accent-color: var(--clr-accent);
+}
+.todo > p {
+  flex: 1;
+  font-size: clamp(0.8rem, 2vw, 1rem);
+  font-weight: bold;
+}
+
+.todo > button {
+  background-color: var(--clr-waring);
+  color: whitesmoke;
+  outline: none;
+  border: none;
+  border-radius: 50%;
+  height: 1.5em;
+  aspect-ratio: 1;
+  font-size: clamp(0.8rem, 2vw, 1rem);
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0;
+}
+
+.completed {
+  text-decoration: line-through;
+}
