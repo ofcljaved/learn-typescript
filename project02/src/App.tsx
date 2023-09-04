@@ -1,7 +1,10 @@
+import Greet from './components/Greet';
 function App() {
   return (
     <>
-      <h1>React With TypeScript project</h1>
+      <Greet username="Javed" strength={70}>
+        <button>Click to Boost!!!</button>
+      </Greet>
     </>
   );
 }
