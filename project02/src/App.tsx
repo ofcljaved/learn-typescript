@@ -1,17 +1,11 @@
-import { useState } from "react";
-import Form from "./components/Form";
-
-interface Person {
-  name: string;
-  age: number;
-}
+import Theme from './components/theme';
+import { ThemeProvider } from './context/ThemeContext';
 
 function App() {
-  const [person, setPerson] = useState<Person>({ name: "", age: 13 });
   return (
-    <>
-      <Form person={person} handleChange={setPerson} />
-    </>
+    <ThemeProvider>
+      <Theme />
+    </ThemeProvider>
   );
 }
 
