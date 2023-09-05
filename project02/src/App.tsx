@@ -1,10 +1,16 @@
-import Greet from './components/Greet';
+import { useState } from "react";
+import Form from "./components/Form";
+
+interface Person {
+  name: string;
+  age: number;
+}
+
 function App() {
+  const [person, setPerson] = useState<Person>({ name: "", age: 13 });
   return (
     <>
-      <Greet username="Javed" strength={70}>
-        <button>Click to Boost!!!</button>
-      </Greet>
+      <Form person={person} handleChange={setPerson} />
     </>
   );
 }

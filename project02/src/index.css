@@ -34,3 +34,7 @@ body {
   background-color: var(--clr-bg);
   color: var(--clr-primary);
 }
+#root {
+  display: grid;
+  place-content: center;
+}
