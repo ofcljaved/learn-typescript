@@ -1,4 +1,13 @@
 import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import {
+  Card,
+  CardFooter,
+  CardHeader,
+  CardDescription,
+} from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Checkbox } from '@/components/ui/checkbox';
 
 type TodoProps = {
   todo: TodoType;
@@ -26,33 +35,42 @@ const TodoItem = ({
   };
 
   return (
-    <div>
-      {editable ? (
-        <input
-          type="text"
-          value={text}
-          onChange={(e) => {
-            setText(e.target.value);
-          }}
+    <Card>
+      <CardHeader className="flex-row gap-5 items-center">
+        <Checkbox
+          checked={todo.isCompleted}
+          onCheckedChange={() => isCompleteTodo(todo.id)}
         />
-      ) : (
-        <p>{todo.title}</p>
-      )}
-      <input
-        type="checkbox"
-        checked={todo.isCompleted}
-        onChange={() => isCompleteTodo(todo.id)}
-      />
-      <button
-        type="button"
-        onClick={() => (editable ? handleDone() : handleEdit())}
-      >
-        {editable ? 'Done' : 'Edit'}
-      </button>
-      <button type="button" onClick={() => deleteTodo(todo.id)}>
-        delete
-      </button>
-    </div>
+        {editable ? (
+          <Input
+            type="text"
+            value={text}
+            onChange={(e) => {
+              setText(e.target.value);
+            }}
+            className="flex-1"
+          />
+        ) : (
+          <CardDescription className="flex-1">{todo.title}</CardDescription>
+        )}
+      </CardHeader>
+      <CardFooter className="flex justify-between">
+        <Button
+          type="button"
+          variant="outline"
+          onClick={() => (editable ? handleDone() : handleEdit())}
+        >
+          {editable ? 'Done' : 'Edit'}
+        </Button>
+        <Button
+          type="button"
+          variant="destructive"
+          onClick={() => deleteTodo(todo.id)}
+        >
+          delete
+        </Button>
+      </CardFooter>
+    </Card>
   );
 };
 

@@ -1,6 +1,8 @@
 import { useState, useEffect, ChangeEvent, FormEvent } from 'react';
-import TodoItem from './components/TodoItem';
-import { getTodos, setTodoLocal } from './features/localStorage';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import TodoItem from '@/components/TodoItem';
+import { getTodos, setTodoLocal } from '@/features/localStorage';
 
 function App() {
   const [todos, setTodos] = useState<TodoType[]>(getTodos());
@@ -52,11 +54,11 @@ function App() {
   }, [todos]);
 
   return (
-    <>
-      <header>
-        <h1>TS TODO</h1>
+    <div className="max-w-3xl mx-auto grid h-[100vh] grid-rows-[max-content_auto_max-content] pb-10 pt-5">
+      <header className="bg-foreground text-background py-5">
+        <h1 className="text-center text-2xl">TS TODO</h1>
       </header>
-      <main>
+      <main className="grid grid-cols-2 gap-5 p-5 content-start">
         {todos.map((todo) => (
           <TodoItem
             key={todo.id}
@@ -68,17 +70,17 @@ function App() {
         ))}
       </main>
       <footer>
-        <form onSubmit={handleSubmit}>
-          <input
+        <form onSubmit={handleSubmit} className="flex gap-1">
+          <Input
             type="text"
             value={task}
             placeholder="Enter Todo"
             onChange={handleInputChange}
           />
-          <button type="submit">Add</button>
+          <Button type="submit">Add</Button>
         </form>
       </footer>
-    </>
+    </div>
   );
 }
 
